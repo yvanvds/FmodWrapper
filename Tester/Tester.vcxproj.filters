@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Menu">
+      <UniqueIdentifier>{9839dbf5-93a6-4587-96b0-d4d461e03a08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Demos">
+      <UniqueIdentifier>{52464104-3b6e-4d26-a382-f046f2bd0848}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Tester.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="basePage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="menuAction.cpp">
+      <Filter>Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="menuBasics.cpp">
+      <Filter>Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuDsp.cpp">
+      <Filter>Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuOther.cpp">
+      <Filter>Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuTop.cpp">
+      <Filter>Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="Demo00_PlaySound.cpp">
+      <Filter>Demos</Filter>
+    </ClCompile>
+    <ClCompile Include="Demo01_SoundProperties.cpp">
+      <Filter>Demos</Filter>
+    </ClCompile>
+    <ClCompile Include="Demo02_3D.cpp">
+      <Filter>Demos</Filter>
+    </ClCompile>
+    <ClCompile Include="Demo03_Virtual.cpp">
+      <Filter>Demos</Filter>
+    </ClCompile>
+    <ClCompile Include="Demo04_Channels.cpp">
+      <Filter>Demos</Filter>
+    </ClCompile>
+    <ClCompile Include="Demo05_Reverb.cpp">
+      <Filter>Demos</Filter>
+    </ClCompile>
+    <ClCompile Include="Demo06_Devices.cpp">
+      <Filter>Demos</Filter>
+    </ClCompile>
+    <ClCompile Include="Demo07_DspSource.cpp">
+      <Filter>Demos</Filter>
+    </ClCompile>
+    <ClCompile Include="Demo08_Occlusion.cpp">
+      <Filter>Demos</Filter>
+    </ClCompile>
+    <ClCompile Include="Demo09_Streaming.cpp">
+      <Filter>Demos</Filter>
+    </ClCompile>
+    <ClCompile Include="Demo10_FilePosition.cpp">
+      <Filter>Demos</Filter>
+    </ClCompile>
+    <ClCompile Include="Demo11_VirtualIO.cpp">
+      <Filter>Demos</Filter>
+    </ClCompile>
+    <ClCompile Include="Demo12_AudioTest.cpp">
+      <Filter>Demos</Filter>
+    </ClCompile>
+    <ClCompile Include="Demo13_Patcher.cpp">
+      <Filter>Demos</Filter>
+    </ClCompile>
+    <ClCompile Include="Demo14_LoadPatcher.cpp">
+      <Filter>Demos</Filter>
+    </ClCompile>
+    <ClCompile Include="Demo15_RestartAudio.cpp">
+      <Filter>Demos</Filter>
+    </ClCompile>
+    <ClCompile Include="Demo16_Midi.cpp">
+      <Filter>Demos</Filter>
+    </ClCompile>
+    <ClCompile Include="Demo17_MidiPatcher.cpp">
+      <Filter>Demos</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="basePage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="menuAction.h">
+      <Filter>Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="menuBasics.h">
+      <Filter>Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuDsp.h">
+      <Filter>Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuOther.h">
+      <Filter>Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuTop.h">
+      <Filter>Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="Demo00_PlaySound.h">
+      <Filter>Demos</Filter>
+    </ClInclude>
+    <ClInclude Include="Demo01_SoundProperties.h">
+      <Filter>Demos</Filter>
+    </ClInclude>
+    <ClInclude Include="Demo02_3D.h">
+      <Filter>Demos</Filter>
+    </ClInclude>
+    <ClInclude Include="Demo03_Virtual.h">
+      <Filter>Demos</Filter>
+    </ClInclude>
+    <ClInclude Include="Demo04_Channels.h">
+      <Filter>Demos</Filter>
+    </ClInclude>
+    <ClInclude Include="Demo05_Reverb.h">
+      <Filter>Demos</Filter>
+    </ClInclude>
+    <ClInclude Include="Demo06_Devices.h">
+      <Filter>Demos</Filter>
+    </ClInclude>
+    <ClInclude Include="Demo07_DspSource.h">
+      <Filter>Demos</Filter>
+    </ClInclude>
+    <ClInclude Include="Demo08_Occlusion.h">
+      <Filter>Demos</Filter>
+    </ClInclude>
+    <ClInclude Include="Demo09_Streaming.h">
+      <Filter>Demos</Filter>
+    </ClInclude>
+    <ClInclude Include="Demo10_FilePosition.h">
+      <Filter>Demos</Filter>
+    </ClInclude>
+    <ClInclude Include="Demo11_VirtualIO.h">
+      <Filter>Demos</Filter>
+    </ClInclude>
+    <ClInclude Include="Demo12_AudioTest.h">
+      <Filter>Demos</Filter>
+    </ClInclude>
+    <ClInclude Include="Demo13_Patcher.h">
+      <Filter>Demos</Filter>
+    </ClInclude>
+    <ClInclude Include="Demo14_LoadPatcher.h">
+      <Filter>Demos</Filter>
+    </ClInclude>
+    <ClInclude Include="Demo15_RestartAudio.h">
+      <Filter>Demos</Filter>
+    </ClInclude>
+    <ClInclude Include="Demo16_Midi.h">
+      <Filter>Demos</Filter>
+    </ClInclude>
+    <ClInclude Include="Demo17_MidiPatcher.h">
+      <Filter>Demos</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\testResources\drone.ogg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\FMOD\lib\x64\fmodL.dll">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>

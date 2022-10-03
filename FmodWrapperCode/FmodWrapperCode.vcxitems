@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <ItemsProjectGuid>{a4c87493-9f1f-4d73-881c-9fdb37df39c5}</ItemsProjectGuid>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectCapability Include="SourceItemsFromImports" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)defines.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)enums.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)error.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)fw.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)listener.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)listener_internal.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)log.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sound.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sounds.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sound_internal.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)system.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)system_internal.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)fwtime.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)vector.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)vector_tools.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)error.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)listener.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)listener_internal.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)log.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sound.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sounds.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sound_internal.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)system.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)system_internal.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)fwtime.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)vector_tools.cpp" />
+  </ItemGroup>
+</Project>
