@@ -9,7 +9,7 @@ namespace FW {
 
 	listener::listener() {
 		_pos.zero();
-		_forward.zero();
+		_forward.zero().z = 1.f;
 		_upward.zero().y = 1.f;
 	}
 
@@ -21,10 +21,14 @@ namespace FW {
 		return INTERNAL::Listener().velocity();
 	}
 
-	void listener::update(const Vector& pos, const Vector& forward, const Vector& upward) {
+	void listener::move(const Vector& pos, const Vector& forward, const Vector& upward) {
 		_pos = pos;
 		_forward = forward;
 		_upward = upward;
-		INTERNAL::Listener().update(pos, forward, upward);
+	}
+
+	void listener::update() {
+		
+		INTERNAL::Listener().update(_pos, _forward, _upward);
 	}
 }

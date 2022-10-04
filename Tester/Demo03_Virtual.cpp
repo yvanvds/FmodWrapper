@@ -28,9 +28,17 @@ void DemoVirtual::ExplainDemo()
 
 void DemoVirtual::ShowStatus()
 {
-#ifdef WIN32
-	_cprintf_s("Sounds: %d / Audio thread CPU Load: %.2f \r", counter, YSE::System().cpuLoad());
-#endif
+	const FW::soundInfo & info = FW::System().getSoundInfo();
+	const FW::cpuInfo& cpu = FW::System().getCpuInfo();
+	std::cout << std::endl;
+	std::cout << "Total   Sounds: " << info.allSounds << std::endl;
+	std::cout << "Real    Sounds: " << info.realSounds << std::endl;
+	std::cout << "Virtual Sounds: " << info.virtualSounds << std::endl;
+	std::cout << std::endl;
+	std::cout << "cpu    (dsp): " << cpu.dsp << std::endl;
+	std::cout << "cpu (stream): " << cpu.stream << std::endl;
+	std::cout << "cpu (update): " << cpu.update << std::endl;
+	std::cout << "cpu  (total): " << cpu.total << std::endl;
 }
 
 void DemoVirtual::AddMessage(const std::string & message)
@@ -40,21 +48,18 @@ void DemoVirtual::AddMessage(const std::string & message)
 
 void DemoVirtual::AddSound()
 {
-	//for (int i = 0; i < 10; i++) {
-	//	sounds.emplace_front();
-
-	//	switch (YSE::Random(4)) {
-	//	case 0: sounds.front().create("..\\TestResources\\contact.ogg", &YSE::ChannelAmbient(), true); break;
-	//	case 1: sounds.front().create("..\\TestResources\\drone.ogg", &YSE::ChannelVoice(), true); break;
-	//	case 2: sounds.front().create("..\\TestResources\\kick.ogg", &YSE::ChannelMusic(), true); break;
-	//	case 3: sounds.front().create("..\\TestResources\\pulse1.ogg", &YSE::ChannelFX(), true); break;
-	//	}
-	//	if (sounds.front().isValid()) {
-	//		sounds.front().pos(YSE::Pos(YSE::Random(20) - 10.f, YSE::Random(20) - 10.f, YSE::Random(20) - 10.f));
-	//		sounds.front().play();
-	//		sounds.front().volume(0.1f); // it can get very loud with 100's of sounds
-	//		counter++;
-	//	}
-	//}
+	for (int i = 0; i < 10; i++) {
+		switch (FW::Random(4)) {
+		case 0: sounds.emplace_front(FW::Sounds().create("../testResources/contact.ogg", true, 0.1f, false)); break;
+		case 1: sounds.emplace_front(FW::Sounds().create("../testResources/drone.ogg", true, 0.1f, false)); break;
+		case 2: sounds.emplace_front(FW::Sounds().create("../testResources/kick.ogg", true, 0.1f, false)); break;
+		case 3: sounds.emplace_front(FW::Sounds().create("../testResources/subtle_beat.ogg", true, 0.1f, false)); break;
+		}
+		if (sounds.front()->isValid()) {
+			sounds.front()->pos(FW::Vector(FW::Random(20) - 10.f, FW::Random(20) - 10.f, FW::Random(20) - 10.f));
+			sounds.front()->play();
+			counter++;
+		}
+	}
 }
 

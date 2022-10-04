@@ -2,6 +2,7 @@
 #include <string>
 #include "defines.h"
 #include "vector.h"
+#include "channel.h"
 
 namespace FW {
 	namespace INTERNAL {
@@ -54,9 +55,13 @@ namespace FW {
 
 	private:
 		friend class sounds;
-		sound(std::string fileName, bool loop, float volume, bool streaming, int key);
+		
+		sound(const std::string & fileName, bool loop, float volume, bool streaming, int key, channel * chan);
 		~sound();
 
+		void update();
+
+		Vector _pos;
 		int key;
 		INTERNAL::sound* internal_sound;
 	};

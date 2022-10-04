@@ -4,17 +4,20 @@
 
 DemoReverb::DemoReverb()
 {
-	//snare.create("..\\TestResources\\snare.ogg", nullptr, true);
-	//snare.play();
- // 
- // // set global reverb
- // YSE::System().getGlobalReverb().setActive(true);
- // YSE::System().getGlobalReverb().setPreset(YSE::REVERB_GENERIC);
- // YSE::ChannelMaster().attachReverb();
+    FW::channel * channel = FW::Channels().Voice();
+	voice = FW::Sounds().create("../testResources/singing.wav", true, 1.0f, false, channel);
+	voice->play();
+  
+    // set global reverb
+    FW::System().reverb(FW::R_GENERIC);
 
- // // 'world' reverbs can be added at specific positions
- // // size is the maximum distance from the reverb at which it its influence is at maximum level
- // // rolloff indicates how far outside its size it will drop to zero influence (linear curve)
+    // enable reverb on voice channel
+    // btw, you can enable this for every channel except master
+    channel->reverb(1.0f);
+
+    // 'world' reverbs can be added at specific positions
+    // size is the maximum distance from the reverb at which it its influence is at maximum level
+    // rolloff indicates how far outside its size it will drop to zero influence (linear curve)
 
  // // add reverb at 5 meter
  // bathroom.create();
@@ -43,13 +46,15 @@ DemoReverb::DemoReverb()
   SetTitle("Reverb Demo");
   AddAction('q', "Move sound and listener forward.", std::bind(&DemoReverb::MoveForward, this));
   AddAction('a', "Move sound and listener backward.", std::bind(&DemoReverb::MoveBack, this));
-  AddAction('1', "Turn global reverb on.", std::bind(&DemoReverb::GlobalReverbOn, this));
-  AddAction('2', "Turn global reverb off.", std::bind(&DemoReverb::GlobalReverbOff, this));
+  AddAction('1', "Global reverb to concerthall.", std::bind(&DemoReverb::GlobalReverbHall, this));
+  AddAction('2', "Global reverb to sewerpipe.", std::bind(&DemoReverb::GlobalReverbSewer, this));
+  AddAction('3', "Turn global reverb off.", std::bind(&DemoReverb::GlobalReverbOff, this));
 }
 
 
 DemoReverb::~DemoReverb()
 {
+    FW::System().reverb(FW::R_OFF);
 }
 
 void DemoReverb::ExplainDemo()
@@ -59,26 +64,31 @@ void DemoReverb::ExplainDemo()
 
 void DemoReverb::MoveForward()
 {
-  /*YSE::Pos pos = YSE::Listener().pos();
+  FW::Vector pos = FW::Listener().pos();
   pos.z += 0.1;
-  YSE::Listener().pos(pos);
-  snare.pos(pos);*/
+  FW::Listener().move(pos, FW::Vector(0.f, 0.f, 1.f), FW::Vector(0.f, 1.f, 0.f));
+  voice->pos(pos);
 }
 
 void DemoReverb::MoveBack()
 {
-  /*YSE::Pos pos = YSE::Listener().pos();
-  pos.z -= 0.1;
-  YSE::Listener().pos(pos);
-  snare.pos(pos);*/
+    FW::Vector pos = FW::Listener().pos();
+    pos.z -= 0.1;
+    FW::Listener().move(pos, FW::Vector(0.f, 0.f, 1.f), FW::Vector(0.f, 1.f, 0.f));
+    voice->pos(pos);
 }
 
-void DemoReverb::GlobalReverbOn()
+void DemoReverb::GlobalReverbHall()
 {
-  //YSE::System().getGlobalReverb().setActive(true);
+  FW::System().reverb(FW::R_CONCERTHALL);
+}
+
+void DemoReverb::GlobalReverbSewer()
+{
+    FW::System().reverb(FW::R_SEWERPIPE);
 }
 
 void DemoReverb::GlobalReverbOff()
 {
-  //YSE::System().getGlobalReverb().setActive(false);
+    FW::System().reverb(FW::R_OFF);
 }

@@ -6,11 +6,18 @@
 #include <fwtime.h>
 #include <listener_internal.h>
 #include <log.h>
+#include <channels.h>
 
 namespace FW {
 	namespace INTERNAL {
 
-		sound::sound(std::string fileName, bool loop, float volume, bool streaming) : fmod_sound(nullptr), _volume(volume), loop(loop) {
+		sound::sound(
+			const std::string & fileName, 
+			bool loop, float volume, bool streaming, 
+			channel * parent) 
+			: fmod_sound(nullptr), _volume(volume), loop(loop)
+		{
+			_parent = parent;
 			result = System().get().createSound(fileName.c_str(), FMOD_3D, 0, &fmod_sound);
 			ERRCHECK(result);
 			if (fmod_sound != nullptr) {
@@ -67,11 +74,20 @@ namespace FW {
 			case SI_NONE:
 				result = System().get().playSound(fmod_sound, 0, false, &fmod_channel);
 				ERRCHECK(result);
+				if (_parent != nullptr) {
+					result = fmod_channel->setChannelGroup(_parent->fmod_channelgroup);
+					ERRCHECK(result);
+					result = fmod_channel->setPriority(_parent->_canGoVirtual ? 128 : 200);
+					ERRCHECK(result);
+				}
+				
 				// sound is really starting, so set all channel properties
 				volume(_volume, _volumeRamp);
 				pos(_newPos);
 				doppler(_doppler);
 				speed(_speed);
+				result = fmod_channel->setReverbProperties(0, 0.f);
+				ERRCHECK(result);
 			}
 			intent = SI_PLAY;
 		}
@@ -164,7 +180,7 @@ namespace FW {
 				if (_isRelative) {
 					_newPos += Listener().position();
 				}
-				_velocity = (_newPos - _lastPos) * (1.f / Time().delta());
+				_velocity = (_newPos - _lastPos) / Time().delta();
 				_lastPos = _newPos;
 				auto position = ToFMOD(pos);
 				auto velocity = ToFMOD(_velocity);

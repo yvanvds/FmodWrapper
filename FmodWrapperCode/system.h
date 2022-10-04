@@ -1,6 +1,8 @@
 #pragma once
 #include "defines.h" 
 #include <string>
+#include "info.h"
+#include "enums.h"
 
 namespace FW {
 	const ::std::string VERSION = "1.0.77";
@@ -15,6 +17,11 @@ namespace FW {
 		void pause();
 		void resume();
 		int missedCallbacks();
+
+		const soundInfo& getSoundInfo();
+		const cpuInfo& getCpuInfo();
+
+		system& reverb(REVERB preset);
 
 		std::string version() const { return VERSION; }
 

@@ -20,7 +20,7 @@ public:
 private:
 	void AddSound();
 
-	//std::forward_list<YSE::sound> sounds;
+	std::forward_list<FW::sound*> sounds;
 	int counter = 0;
 };
 

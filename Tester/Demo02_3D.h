@@ -10,6 +10,8 @@ class Demo3D :
 public:
 	Demo3D();
 	virtual void ExplainDemo();
+	virtual void ShowStatus();
+
 
 	void SelectSound1();
 	void SelectSound2();

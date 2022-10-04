@@ -2,31 +2,27 @@
 
 /* Channels
 
-In YSE, Channels are groups of sounds that can be modified together. For example, changing the volume
+In FW, Channels are groups of sounds that can be modified together. For example, changing the volume
 of a channel will impact all sounds in the channel. But it is also possible to link DSP filters to
 channels, or asign reverb.
 
 Channels can also be members of other channels. So you could build a more complex tree of channels and
-sounds. If you remove a custom made channel, all sounds will be moved to the parent channel. Moving sounds
+sounds. If you remove a custom made channel, all sounds will be moved to the master channel. Moving sounds
 between channels is posible, but there might be glitches if the channel's gain level is very different.
 
-Very important:
-Every channel renders in its own thread. This means YSE will scale very well, as long as you don't assign
-all sounds to the same output channel. On the other hand, too much channels will also decrease performance
-because of all the thread handling...
 */
 
-DemoChannels::DemoChannels() //: customChannel(new YSE::channel)
+DemoChannels::DemoChannels() 
 {
-	//customChannel->create("myChannel", YSE::ChannelMaster());
+	customChannel = FW::Channels().create("my channel", true, FW::Channels().Master());
 
 	//// add a sound to your custom channel
-	//kick.create("..\\TestResources\\kick.ogg", customChannel, true); 
-	//kick.play();
+	kick = FW::Sounds().create("../testResources/kick.ogg", true, 1.f, false, customChannel);
+	kick->play();
 
 	//// add a sound to the music channel
-	//pulse.create("..\\TestResources\\pulse1.ogg", &YSE::ChannelMusic(), true);
-	//pulse.play();
+	pulse = FW::Sounds().create("../testResources/subtle_beat.ogg", true, 1.f, false, FW::Channels().Music());
+	pulse->play();
 
 	SetTitle("Custom Channels");
 	AddAction('q', "Increase Volume (Master Channel)", std::bind(&DemoChannels::MasterIncVol, this));
@@ -53,40 +49,40 @@ void DemoChannels::ExplainDemo()
 
 void DemoChannels::MasterIncVol()
 {
-	//YSE::ChannelMaster().setVolume(YSE::ChannelMaster().getVolume() + 0.1f);
+	FW::Channels().Master()->volume(FW::Channels().Master()->volume() + 0.1f);
 }
 
 void DemoChannels::MasterDecVol()
 {
-	//YSE::ChannelMaster().setVolume(YSE::ChannelMaster().getVolume() - 0.1f);
+	FW::Channels().Master()->volume(FW::Channels().Master()->volume() - 0.1f);
 }
 
 void DemoChannels::CustomIncVol()
 {
-	//if (customChannel != nullptr) customChannel->setVolume(customChannel->getVolume() + 0.1f);
+	if (customChannel != nullptr) customChannel->volume(customChannel->volume() + 0.1f);
 }
 
 void DemoChannels::CustomDecVol()
 {
-	//if (customChannel != nullptr) customChannel->setVolume(customChannel->getVolume() - 0.1f);
+	if (customChannel != nullptr) customChannel->volume(customChannel->volume() - 0.1f);
 }
 
 void DemoChannels::MusicIncVol()
 {
-	//YSE::ChannelMusic().setVolume(YSE::ChannelMusic().getVolume() + 0.1f);
+	FW::Channels().Music()->volume(FW::Channels().Music()->volume() + 0.1f);
 }
 
 void DemoChannels::MusicDecVol()
 {
-	//YSE::ChannelMusic().setVolume(YSE::ChannelMusic().getVolume() - 0.1f);
+	FW::Channels().Music()->volume(FW::Channels().Music()->volume() - 0.1f);
 }
 
 void DemoChannels::CustomDelete()
 {
-	/*if (customChannel != nullptr) {
-		delete customChannel;
+	if (customChannel != nullptr) {
+		FW::Channels().release(customChannel);
 		customChannel = nullptr;
-		std::cout << "The custom channel is deleted. All sounds and subchannels are automatically moved to the parent channel." << std::endl;
-	}*/
+		std::cout << "The custom channel is deleted. All sounds and subchannels are automatically moved to the master channel." << std::endl;
+	}
 }
 

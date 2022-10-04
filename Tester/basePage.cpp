@@ -48,8 +48,15 @@ void basePage::Run()
 {
 	ShowMenu();
 
+	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+	CONSOLE_SCREEN_BUFFER_INFO bufferInfo;
+	GetConsoleScreenBufferInfo(h, &bufferInfo);
+
 	while (true)
 	{
+		// reset the cursor position to where it was each time
+		SetConsoleCursorPosition(h, bufferInfo.dwCursorPosition);
+
 		if (_kbhit()) {
 			char ch = _getch();
 			if (ch == '0') break;
@@ -80,5 +87,6 @@ void basePage::Run()
 	}
 
 	FW::Sounds().releaseAll();
+	FW::Channels().releaseAll();
 }
 

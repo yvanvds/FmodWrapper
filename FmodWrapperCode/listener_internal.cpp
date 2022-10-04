@@ -2,6 +2,7 @@
 #include "system_internal.h"
 #include "vector_tools.h"
 #include "fwtime.h"
+#include <error.h>
 
 namespace FW {
 	namespace INTERNAL {
@@ -10,12 +11,10 @@ namespace FW {
 			return s;
 		}
 
-		listener::listener() {
+		listener::listener()
+		{
 			_lastPos.zero();
 			_velocity.zero();
-			Vector forward(0.f);
-			Vector up(0.f, 1.f, 0.f);
-			update(_lastPos, forward, up);
 		}
 
 		const Vector& listener::velocity() const {
@@ -28,7 +27,8 @@ namespace FW {
 
 		void listener::update(const Vector& pos, const Vector& forward, const Vector& upward) {
 			_newPos = pos * System().distanceFactor();
-			_velocity = (_newPos - _lastPos) * (1.f / Time().delta());
+			float delta = Time().delta();
+			_velocity = (_newPos - _lastPos) / Time().delta();
 			_lastPos = _newPos;
 
 			auto position = ToFMOD(pos);
@@ -36,13 +36,14 @@ namespace FW {
 			auto fw = ToFMOD(forward);
 			auto up = ToFMOD(upward);
 			
-			System().get().set3DListenerAttributes(
+			result = System().get().set3DListenerAttributes(
 				0,
 				&position,
 				&velocity,
 				&fw,
 				&up
 			);
+			ERRCHECK(result);
 		}
 	}
 }

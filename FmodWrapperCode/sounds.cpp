@@ -1,5 +1,6 @@
 #include "sounds.h"
 #include "sound_internal.h"
+#include <channel.h>
 
 namespace FW {
 
@@ -12,8 +13,10 @@ namespace FW {
 
 	}
 
-	sound* sounds::create(std::string fileName, bool loop, float volume, bool streaming) {
-		auto result = map.emplace(counter, new sound(fileName, loop, volume, streaming, counter));
+	sound* sounds::create(std::string fileName, bool loop, float volume, bool streaming, channel * parent) {
+		auto result = map.emplace(
+			counter, new sound(fileName, loop, volume, streaming, counter, (FW::channel*)parent)
+		);
 		counter++;
 
 		if (result.second == true) {
@@ -21,6 +24,14 @@ namespace FW {
 		}
 		else {
 			return nullptr;
+		}
+	}
+
+	void sounds::update() {
+		auto it = map.begin();
+		while (it != map.end()) {
+			it->second->update();
+			it++;
 		}
 	}
 

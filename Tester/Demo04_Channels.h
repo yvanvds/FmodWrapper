@@ -25,7 +25,7 @@ private:
 
 	// normally you wouldn't use pointers for this, but this 
 	// demonstrates what happens if you delete a channel object
-	/*YSE::channel * customChannel;
-	YSE::sound kick, pulse;*/
+	FW::channel * customChannel;
+	FW::sound * kick, *pulse;
 };
 

@@ -10,7 +10,7 @@ namespace FW {
 
             float delta();
 
-            time() { _current = _last = 0; _delta = 0.0f; }
+            time() { _current = _last = 0; _delta = 0.001f; }
         private:
             unsigned long _current;
             unsigned long _last;

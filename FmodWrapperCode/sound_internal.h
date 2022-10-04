@@ -2,6 +2,7 @@
 #include "fmod.hpp"
 #include <string>
 #include "vector.h"
+#include "channel_internal.h"
 
 namespace FW {
 	namespace INTERNAL {
@@ -14,7 +15,7 @@ namespace FW {
 
 		class sound {
 		public:
-			sound(std::string fileName, bool loop, float volume, bool streaming);
+			sound(const std::string & fileName, bool loop, float volume, bool streaming, FW::INTERNAL::channel * parent);
 			~sound();
 
 			bool isValid() const;
@@ -59,6 +60,7 @@ namespace FW {
 		private:
 			FMOD::Sound* fmod_sound = nullptr;
 			FMOD::Channel* fmod_channel = nullptr;
+			FW::INTERNAL::channel* _parent;
 			FMOD_RESULT result;
 			bool loop;
 			SOUND_INTENT intent = SI_NONE;
@@ -71,6 +73,8 @@ namespace FW {
 			float _frequency = 1;
 			float _doppler = 0;
 			float _size = 5000;
+
+
 		};
 	}
 }

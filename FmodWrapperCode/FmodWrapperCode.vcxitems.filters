@@ -19,6 +19,9 @@
     <Filter Include="listener">
       <UniqueIdentifier>{6faa27f7-ad71-46cb-b398-0ef50a649dd4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="channel">
+      <UniqueIdentifier>{e0ad12c6-9f45-4f64-a4f9-3fc0b9d99e0c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)defines.h">
@@ -64,6 +67,21 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)fwtime.h">
       <Filter>utils</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)info.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)misc.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)channel.h">
+      <Filter>channel</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)channel_internal.h">
+      <Filter>channel</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)channels.h">
+      <Filter>channel</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)system_internal.cpp">
@@ -98,6 +116,15 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)fwtime.cpp">
       <Filter>utils</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)channel.cpp">
+      <Filter>channel</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)channels.cpp">
+      <Filter>channel</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)channel_internal.cpp">
+      <Filter>channel</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

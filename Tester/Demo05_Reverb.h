@@ -14,10 +14,11 @@ public:
 private:
   void MoveForward();
   void MoveBack();
-  void GlobalReverbOn();
+  void GlobalReverbHall();
+  void GlobalReverbSewer();
   void GlobalReverbOff();
 
-  /*YSE::sound snare;
-  YSE::reverb bathroom, hall, sewer, custom;*/
+  FW::sound* voice;
+  //YSE::reverb bathroom, hall, sewer, custom;*/
 };
 

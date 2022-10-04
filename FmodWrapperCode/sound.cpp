@@ -1,10 +1,11 @@
 #include "sound.h"
 #include "sound_internal.h"
+#include <channel.h>
 
 namespace FW {
 	 
-	sound::sound(std::string filename, bool loop, float volume, bool streaming, int key) : key(key) {
-		internal_sound = new INTERNAL::sound(filename, loop, volume, streaming);
+	sound::sound(const std::string & filename, bool loop, float volume, bool streaming, int key, channel * parent) : key(key) {
+		internal_sound = new INTERNAL::sound(filename, loop, volume, streaming, parent != nullptr ? parent->internal_channel : nullptr);
 	}
 
 	sound::~sound() {
@@ -77,12 +78,16 @@ namespace FW {
 	}
 
 	sound& sound::pos(const Vector& pos) {
-		internal_sound->pos(pos);
+		_pos = pos;
 		return *this;
 	}
 
 	const Vector& sound::pos() const {
 		return internal_sound->pos();
+	}
+
+	void sound::update() {
+		internal_sound->pos(_pos);
 	}
 
 	sound& sound::speed(float value) {

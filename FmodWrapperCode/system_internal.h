@@ -1,5 +1,7 @@
 #pragma once
 #include "fmod.hpp"
+#include "info.h"
+#include "enums.h"
 
 namespace FW {
 	namespace INTERNAL {
@@ -19,6 +21,11 @@ namespace FW {
 			float distanceFactor() const;
 			float rolloffScale() const;
 
+			void reverb(REVERB preset);
+
+			const soundInfo& getSoundInfo();
+			const cpuInfo& getCpuInfo();
+
 
 		private:
 			friend system& System();
@@ -31,7 +38,8 @@ namespace FW {
 			float _distanceFactor;
 			float _rolloffScale;
 
-			
+			soundInfo _soundInfo;
+			cpuInfo _cpuInfo;
 		};
 
 		system& System();
