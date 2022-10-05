@@ -51,6 +51,13 @@ int FW::system::missedCallbacks()
 	return 0;
 }
 
+FW::system& FW::system::occlusionCallback(float(*func)(const FW::Vector&, const FW::Vector&)) {
+	INTERNAL::System().occlusionCallback(func);
+	return *this;
+}
+
+
+
 const FW::soundInfo& FW::system::getSoundInfo() {
 	return INTERNAL::System().getSoundInfo();
 }

@@ -2,6 +2,7 @@
 #include "fmod.hpp"
 #include "info.h"
 #include "enums.h"
+#include "vector.h"
 
 namespace FW {
 	namespace INTERNAL {
@@ -22,10 +23,12 @@ namespace FW {
 			float rolloffScale() const;
 
 			void reverb(REVERB preset);
+			void occlusionCallback(float(*func)(const Vector&, const Vector&));
 
 			const soundInfo& getSoundInfo();
 			const cpuInfo& getCpuInfo();
 
+			float getOcclusion(const Vector& source);
 
 		private:
 			friend system& System();
@@ -37,6 +40,8 @@ namespace FW {
 			float _dopplerScale;
 			float _distanceFactor;
 			float _rolloffScale;
+
+			float(*_occlusionPtr)(const Vector& source, const Vector& listener) = nullptr;
 
 			soundInfo _soundInfo;
 			cpuInfo _cpuInfo;

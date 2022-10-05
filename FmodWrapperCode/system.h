@@ -3,6 +3,7 @@
 #include <string>
 #include "info.h"
 #include "enums.h"
+#include "vector.h"
 
 namespace FW {
 	const ::std::string VERSION = "1.0.77";
@@ -22,6 +23,7 @@ namespace FW {
 		const cpuInfo& getCpuInfo();
 
 		system& reverb(REVERB preset);
+		system& occlusionCallback(float(*func)(const Vector&, const Vector&));
 
 		std::string version() const { return VERSION; }
 

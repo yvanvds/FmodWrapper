@@ -47,6 +47,6 @@ private:
   void Fade();
   void Play();
   
-  //YSE::sound sound;
+  FW::sound* sound;
 };
 

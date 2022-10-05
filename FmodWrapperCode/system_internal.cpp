@@ -2,7 +2,9 @@
 #include "sounds.h"
 #include "error.h"
 #include "fwtime.h"
+#include <listener_internal.h>
 #include <channels.h>
+#include "conversions.h"
 
 namespace FW {
 	namespace INTERNAL {
@@ -53,33 +55,7 @@ namespace FW {
 		}
 
 		void system::reverb(REVERB preset) {
-			FMOD_REVERB_PROPERTIES prop = FMOD_PRESET_OFF;
-			switch (preset) {
-				case R_OFF: prop = FMOD_PRESET_OFF; break;
-				case R_GENERIC: prop = FMOD_PRESET_GENERIC; break;
-				case R_PADDEDCELL: prop = FMOD_PRESET_PADDEDCELL; break;
-				case R_ROOM: prop = FMOD_PRESET_ROOM; break;
-				case R_BATHROOM: prop = FMOD_PRESET_BATHROOM; break;
-				case R_LIVINGROOM: prop = FMOD_PRESET_LIVINGROOM; break;
-				case R_STONEROOM: prop = FMOD_PRESET_STONEROOM; break;
-				case R_AUDITORIUM: prop = FMOD_PRESET_AUDITORIUM; break;
-				case R_CONCERTHALL: prop = FMOD_PRESET_CONCERTHALL; break;
-				case R_CAVE: prop = FMOD_PRESET_CAVE; break;
-				case R_ARENA: prop = FMOD_PRESET_ARENA; break;
-				case R_HANGAR: prop = FMOD_PRESET_HANGAR; break;
-				case R_CARPETTEDHALLWAY: prop = FMOD_PRESET_CARPETTEDHALLWAY; break;
-				case R_HALLWAY: prop = FMOD_PRESET_HALLWAY; break;
-				case R_STONECORRIDOR: prop = FMOD_PRESET_STONECORRIDOR; break;
-				case R_ALLEY: prop = FMOD_PRESET_ALLEY; break;
-				case R_FOREST: prop = FMOD_PRESET_FOREST; break;
-				case R_CITY: prop = FMOD_PRESET_CITY; break;
-				case R_MOUNTAINS: prop = FMOD_PRESET_MOUNTAINS; break;
-				case R_QUARRY: prop = FMOD_PRESET_QUARRY; break;
-				case R_PLAIN: prop = FMOD_PRESET_PLAIN; break;
-				case R_PARKINGLOT: prop = FMOD_PRESET_PARKINGLOT; break;
-				case R_SEWERPIPE: prop = FMOD_PRESET_SEWERPIPE; break;
-				case R_UNDERWATER: prop = FMOD_PRESET_UNDERWATER; break;
-			}
+			FMOD_REVERB_PROPERTIES prop = ToFMOD(preset);
 			result = fmod_system->setReverbProperties(0, &prop);
 			ERRCHECK(result);
 		}
@@ -118,6 +94,16 @@ namespace FW {
 			_cpuInfo.total = usage.convolution1 + usage.convolution2 + usage.dsp + usage.stream + usage.update;
 			return _cpuInfo;
 		}
+
+		void system::occlusionCallback(float(*func)(const Vector&, const Vector&)) {
+			_occlusionPtr = func;
+		}
+
+		float system::getOcclusion(const Vector& source) {
+			if (_occlusionPtr == nullptr) return 0;
+			return _occlusionPtr(source, Listener().position());
+		}
+
 	}
 }
 

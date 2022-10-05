@@ -88,6 +88,7 @@ namespace FW {
 
 	void sound::update() {
 		internal_sound->pos(_pos);
+		internal_sound->calculateOcclusion();
 	}
 
 	sound& sound::speed(float value) {
@@ -134,6 +135,15 @@ namespace FW {
 
 	float sound::doppler() const {
 		return internal_sound->doppler();
+	}
+
+	sound& sound::occlusionActive(bool value) {
+		internal_sound->occlusionActive(value);
+		return *this;
+	}
+
+	bool sound::occlusionActive() const {
+		return internal_sound->occlusionActive();
 	}
 
 }

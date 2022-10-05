@@ -26,14 +26,18 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)listener.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)listener_internal.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)log.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)reverb.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)reverbs.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)reverb_internal.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sound.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sounds.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sound_internal.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sound_pool.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)system.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)system_internal.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)fwtime.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)vector.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)vector_tools.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)conversions.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)channels.cpp" />
@@ -43,12 +47,16 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)listener.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)listener_internal.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)log.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)reverb.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)reverbs.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)reverb_internal.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sound.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sounds.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sound_internal.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sound_pool.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)system.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)system_internal.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)fwtime.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)vector_tools.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)conversions.cpp" />
   </ItemGroup>
 </Project>

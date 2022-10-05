@@ -11,8 +11,8 @@ DemoStreaming::DemoStreaming()
   AddAction('5', "Restart at full Volume", std::bind(&DemoStreaming::Play, this));
 
   // setting the last parameter to true will enable streaming
-  //sound.create("..\\TestResources\\countdown.ogg", nullptr, true, 1.f, true);
-  //sound.play();
+  sound = FW::Sounds().create("../TestResources/18.ogg", true, 1.f, true);
+  sound->play();
 }
 
 void DemoStreaming::ExplainDemo()
@@ -22,28 +22,28 @@ void DemoStreaming::ExplainDemo()
 
 void DemoStreaming::SpeedInc()
 {
-  /*sound.speed(sound.speed() + 0.01f);
-	std::cout << "time: " << sound.time() << std::endl;*/
+	sound->speed(sound->speed() + 0.01f);
+	std::cout << "time: " << sound->time() << std::endl;
 }
 
 void DemoStreaming::SpeedDec()
 {
- /* sound.speed(sound.speed() - 0.01f);
-	std::cout << "time: " << sound.time() << std::endl;*/
+	sound->speed(sound->speed() - 0.01f);
+	std::cout << "time: " << sound->time() << std::endl;
 }
 
 void DemoStreaming::Pause()
 {
-  //sound.pause();
+    sound->pause();
 }
 
 void DemoStreaming::Fade()
 {
-  //sound.fadeAndStop(3000);
+	sound->volume(0, 3000);
 }
 
 void DemoStreaming::Play()
 {
-	/*sound.volume(1);
-	sound.play();*/
+	sound->volume(1);
+	sound->play();
 }

@@ -18,6 +18,7 @@ namespace FW {
 	channel::~channel() {
 		if (internal_channel != nullptr) {
 			delete internal_channel;
+			internal_channel = nullptr;
 		}
 	}
 

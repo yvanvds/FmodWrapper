@@ -7,6 +7,9 @@
 #include "channel.h"
 #include "listener.h"
 
+#include "reverbs.h"
+#include "reverb.h"
+
 #include "log.h"
 #include "vector.h"
 #include "info.h"

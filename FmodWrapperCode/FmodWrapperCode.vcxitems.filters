@@ -22,6 +22,9 @@
     <Filter Include="channel">
       <UniqueIdentifier>{e0ad12c6-9f45-4f64-a4f9-3fc0b9d99e0c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="reverb">
+      <UniqueIdentifier>{bd3ff287-616f-430e-8ccd-2ef44350b86e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)defines.h">
@@ -55,7 +58,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)vector.h">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)vector_tools.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)conversions.h">
       <Filter>utils</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)listener_internal.h">
@@ -82,6 +85,18 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)channels.h">
       <Filter>channel</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)reverb_internal.h">
+      <Filter>reverb</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)reverb.h">
+      <Filter>reverb</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)reverbs.h">
+      <Filter>reverb</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sound_pool.h">
+      <Filter>sound</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)system_internal.cpp">
@@ -105,7 +120,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)error.cpp">
       <Filter>log</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)vector_tools.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)conversions.cpp">
       <Filter>utils</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)listener_internal.cpp">
@@ -125,6 +140,18 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)channel_internal.cpp">
       <Filter>channel</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)reverb_internal.cpp">
+      <Filter>reverb</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)reverb.cpp">
+      <Filter>reverb</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)reverbs.cpp">
+      <Filter>reverb</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sound_pool.cpp">
+      <Filter>sound</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

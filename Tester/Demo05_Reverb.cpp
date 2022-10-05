@@ -20,19 +20,16 @@ DemoReverb::DemoReverb()
     // rolloff indicates how far outside its size it will drop to zero influence (linear curve)
 
  // // add reverb at 5 meter
- // bathroom.create();
- // bathroom.setPosition(YSE::Pos(0, 0, 5)).setSize(1).setRollOff(1);
- // bathroom.setPreset(YSE::REVERB_BATHROOM);
+    bathroom = FW::Reverbs().create(FW::R_BATHROOM);
+    bathroom->set3D(FW::Vector(0.f, 0.f, 5.f), 2, 2);
 
  // // add reverb at 10 meter
- // hall.create();
- // hall.setPosition(YSE::Pos(0, 0, 10)).setSize(1).setRollOff(1);
- // hall.setPreset(YSE::REVERB_HALL);
+    hall = FW::Reverbs().create(FW::R_HALLWAY);
+    hall->set3D(FW::Vector(0.f, 0.f, 10.f), 2, 2);
 
  // // add reverb at 15 meter
- // sewer.create();
- // sewer.setPosition(YSE::Pos(0, 0, 15)).setSize(1).setRollOff(1);
- // sewer.setPreset(YSE::REVERB_SEWERPIPE);
+    sewer = FW::Reverbs().create(FW::R_SEWERPIPE);
+    sewer->set3D(FW::Vector(0.f, 0.f, 15.f), 2, 2);
 
  // // add reverb at 20 meter
  // custom.create();
@@ -60,6 +57,11 @@ DemoReverb::~DemoReverb()
 void DemoReverb::ExplainDemo()
 {
   std::cout << "This example as one global reverb. On top of that, there are several localized reverbs which will alter the listener's experience when moving around." << std::endl;
+}
+
+void DemoReverb::ShowStatus() {
+    FW::Vector pos = FW::Listener().pos();
+    std::cout << "listener z position: " << pos.z << std::endl;
 }
 
 void DemoReverb::MoveForward()

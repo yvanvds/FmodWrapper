@@ -50,7 +50,8 @@ namespace FW {
 		API sound& doppler(float value);
 		API float doppler() const;
 
-
+		API sound& occlusionActive(bool value);
+		API bool occlusionActive() const;
 
 
 	private:

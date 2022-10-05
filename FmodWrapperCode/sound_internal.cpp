@@ -2,11 +2,12 @@
 #include "system_internal.h"
 #include <string>
 #include "error.h"
-#include "vector_tools.h"
+#include "conversions.h"
 #include <fwtime.h>
 #include <listener_internal.h>
 #include <log.h>
 #include <channels.h>
+#include "sound_pool.h"
 
 namespace FW {
 	namespace INTERNAL {
@@ -15,11 +16,16 @@ namespace FW {
 			const std::string & fileName, 
 			bool loop, float volume, bool streaming, 
 			channel * parent) 
-			: fmod_sound(nullptr), _volume(volume), loop(loop)
+			: fmod_sound(nullptr), _volume(volume), loop(loop), _fileName(fileName)
 		{
 			_parent = parent;
-			result = System().get().createSound(fileName.c_str(), FMOD_3D, 0, &fmod_sound);
-			ERRCHECK(result);
+			if (streaming) {
+				result = System().get().createStream(fileName.c_str(), FMOD_3D, 0, &fmod_sound);
+				ERRCHECK(result);
+			}
+			else {
+				fmod_sound = SoundPool().claim(fileName);
+			}
 			if (fmod_sound != nullptr) {
 				result = fmod_sound->setMode(loop ? FMOD_LOOP_NORMAL : FMOD_LOOP_OFF);
 				ERRCHECK(result);
@@ -33,10 +39,7 @@ namespace FW {
 		}
 
 		sound::~sound() {
-			if (fmod_sound != nullptr) {
-				result = fmod_sound->release();
-				ERRCHECK(result);
-			}
+			SoundPool().release(_fileName);
 		}
 
 		bool sound::isValid() const {
@@ -268,6 +271,23 @@ namespace FW {
 
 		float sound::doppler() const {
 			return _doppler;
+		}
+
+		void sound::occlusionActive(bool value) {
+			_occlusionActive = value;
+		}
+
+		bool sound::occlusionActive() const {
+			return _occlusionActive;
+		}
+
+		void sound::calculateOcclusion() {
+			if (!_occlusionActive) return;
+			float value = System().getOcclusion(_newPos);
+			if (value > 0) {
+				result = fmod_channel->setVolume(_volume * (1 - value));
+				ERRCHECK(result);
+			}
 		}
 	}
 }

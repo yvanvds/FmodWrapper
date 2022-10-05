@@ -10,6 +10,7 @@ public:
   ~DemoReverb();
 
   virtual void ExplainDemo();
+  virtual void ShowStatus();
 
 private:
   void MoveForward();
@@ -19,6 +20,6 @@ private:
   void GlobalReverbOff();
 
   FW::sound* voice;
-  //YSE::reverb bathroom, hall, sewer, custom;*/
+  FW::reverb* bathroom, * hall, * sewer;
 };
 

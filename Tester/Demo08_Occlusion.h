@@ -15,6 +15,6 @@ private:
   void OcclusionInc();
   void OcclusionDec();
 
-  //YSE::sound sound;
+  FW::sound* sound;
 };
 

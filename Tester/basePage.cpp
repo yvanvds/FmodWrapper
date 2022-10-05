@@ -88,5 +88,6 @@ void basePage::Run()
 
 	FW::Sounds().releaseAll();
 	FW::Channels().releaseAll();
+	FW::Reverbs().releaseAll();
 }
 

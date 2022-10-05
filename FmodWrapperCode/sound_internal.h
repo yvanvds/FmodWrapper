@@ -57,7 +57,13 @@ namespace FW {
 			unsigned int time() const;
 			void time(unsigned int value);
 
+			void occlusionActive(bool value);
+			bool occlusionActive() const;
+
+			void calculateOcclusion();
+
 		private:
+			std::string _fileName;
 			FMOD::Sound* fmod_sound = nullptr;
 			FMOD::Channel* fmod_channel = nullptr;
 			FW::INTERNAL::channel* _parent;
@@ -73,7 +79,7 @@ namespace FW {
 			float _frequency = 1;
 			float _doppler = 0;
 			float _size = 5000;
-
+			bool _occlusionActive = false;
 
 		};
 	}
