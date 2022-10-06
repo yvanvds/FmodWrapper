@@ -23,6 +23,6 @@ private:
   void Eight();
   void Nine();
 
-  //YSE::sound sound;
+  FW::sound * sound;
 };
 

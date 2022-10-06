@@ -15,8 +15,8 @@ DemoFilePosition::DemoFilePosition()
   AddAction('8', "Eight", std::bind(&DemoFilePosition::Eight, this));
   AddAction('9', "Nine", std::bind(&DemoFilePosition::Nine, this));
 
-	/*sound.create("..\\TestResources\\countdown.ogg", nullptr, true);
-	sound.play();*/
+	sound = FW::Sounds().create("../testResources/countdown.ogg", true, 1.0f, true);
+	sound->play();
 }
 
 
@@ -31,50 +31,50 @@ void DemoFilePosition::ExplainDemo()
 
 void DemoFilePosition::Zero()
 {
-  //sound.time(11.2f * 44100);
+  sound->time(11.2f * 44100);
 }
 
 void DemoFilePosition::One()
 {
-  //sound.time(10.0f * 44100);
+  sound->time(10.0f * 44100);
 }
 
 void DemoFilePosition::Two()
 {
-  //sound.time(9.0f * 44100);
+  sound->time(9.0f * 44100);
 }
 
 void DemoFilePosition::Three()
 {
-  //sound.time(8.0f * 44100);
+  sound->time(8.0f * 44100);
 }
 
 void DemoFilePosition::Four()
 {
-  //sound.time(6.7f * 44100);
+  sound->time(6.7f * 44100);
 }
 
 void DemoFilePosition::Five()
 {
-  //sound.time(5.5f * 44100);
+  sound->time(5.5f * 44100);
 }
 
 void DemoFilePosition::Six()
 {
-  //sound.time(4.3f * 44100);
+  sound->time(4.3f * 44100);
 }
 
 void DemoFilePosition::Seven()
 {
-  //sound.time(3.2f * 44100);
+  sound->time(3.2f * 44100);
 }
 
 void DemoFilePosition::Eight()
 {
-  //sound.time(2.0f * 44100);
+  sound->time(2.0f * 44100);
 }
 
 void DemoFilePosition::Nine()
 {
-  //sound.time(1.0f * 44100);
+  sound->time(1.0f * 44100);
 }
